@@ -3,20 +3,12 @@ require 'pry'
 
 class Triangle
   def initialize x,y,z
-    @internal_a = x
-    @c = y
-    @b = z
+    @a = x
+    @b = y
+    @c = z
   end
 
-  def a
-    @internal_a
-  end
-  def b
-    @c
-  end
-  def c
-    @b
-  end
+  attr_reader :a, :b, :c
 
   def perimeter
     a + b + c
@@ -37,7 +29,6 @@ end
 class TriangleTest < Minitest::Test
   def test_triangles_can_determine_their_sides
     t = Triangle.new(3,4,5)
-    binding.pry
     # t.a => 3
     assert_equal 3, t.a
   end
