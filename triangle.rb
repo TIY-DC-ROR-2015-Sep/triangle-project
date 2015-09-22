@@ -2,16 +2,23 @@ require 'minitest/autorun'
 require 'pry'
 
 class Triangle
-  attr_accessor :a, :b, :c
+  def initialize x,y,z
+    @internal_a = x
+    @c = y
+    @b = z
+  end
 
-  def initialize first, second, third
-    self.a = first
-    self.b = second
-    self.c = third
+  def a
+    @internal_a
+  end
+  def b
+    @c
+  end
+  def c
+    @b
   end
 
   def perimeter
-    # self.a + self.b + self.c
     a + b + c
   end
 
@@ -26,9 +33,11 @@ class Triangle
   end
 end
 
+
 class TriangleTest < Minitest::Test
   def test_triangles_can_determine_their_sides
     t = Triangle.new(3,4,5)
+    binding.pry
     # t.a => 3
     assert_equal 3, t.a
   end
@@ -47,5 +56,8 @@ class TriangleTest < Minitest::Test
 
     u = Triangle.new(5,7,5)
     assert_equal "isosceles", u.type
+
+    v = Triangle.new(8,9,10)
+    assert_equal "scalene", v.type
   end
 end
