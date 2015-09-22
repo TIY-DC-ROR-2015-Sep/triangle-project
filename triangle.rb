@@ -3,21 +3,27 @@ require 'pry'
 
 class Triangle
   def initialize x,y,z
-    @a = x
-    @b = y
-    @c = z
+    @sides = [x,y,z]
   end
 
-  attr_reader :a, :b, :c
+  def a
+    @sides[0]
+  end
+  def b
+    @sides[1]
+  end
+  def c
+    @sides[2]
+  end
 
   def perimeter
     a + b + c
   end
 
   def type
-    if a == b && b == c
+    if @sides.uniq.count == 1
       "equilateral"
-    elsif a == b || b == c || a == c
+    elsif @sides.uniq.count == 2
       "isosceles"
     else
       "scalene"
